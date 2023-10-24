@@ -1,34 +1,42 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace Database\Seeders;
 
-class CreateAuthorsTable extends Migration
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class AuthorsTableSeeder extends Seeder
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-   {
-       Schema::create('authors', function (Blueprint $table) {
-           $table->id();
-           $table->string('name', 100);
-           $table->integer('age');
-           $table->string('nationality', 100);
-           $table->timestamp('created_at')->useCurrent()->nullable();
-           $table->timestamp('updated_at')->useCurrent()->nullable();
-       });
-   }
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('authors');
-    }
+  /**
+  * Run the database seeds.
+  *
+  * @return void
+  */
+  public function run()
+  {
+    $param = [
+      'name' => 'tony',
+      'age' => 35,
+      'nationality' => 'American'
+    ];
+    DB::table('authors')->insert($param);
+    $param = [
+      'name' => 'jack',
+      'age' => 20,
+      'nationality' => 'British'
+    ];
+    DB::table('authors')->insert($param);
+    $param = [
+      'name' => 'sara',
+      'age' => 45,
+      'nationality' => 'Egyptian'
+    ];
+    DB::table('authors')->insert($param);
+    $param = [
+      'name' => 'saly',
+      'age' => 31,
+      'nationality' => 'Chinese'
+    ];
+    DB::table('authors')->insert($param);
+  }
 }
